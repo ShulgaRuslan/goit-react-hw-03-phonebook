@@ -15,7 +15,22 @@ export class App extends Component {
     ],
     filter: '',
   }
-  onSubmitHandler = data => {
+componentDidMount() {
+  const startContacts = JSON.parse(localStorage.getItem('contacts'));
+  console.log(startContacts);
+    if (startContacts) {
+    this.setState({ contacts: startContacts });
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+  console.log('update contacts')
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+}
+  
+onSubmitHandler = data => {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, data],
     }));
