@@ -18,10 +18,17 @@ export class App extends Component {
 componentDidMount() {
   const startContacts = JSON.parse(localStorage.getItem('contacts'));
   console.log(startContacts);
-    if (startContacts) {
-    this.setState({ contacts: startContacts });
-    }
+   if (startContacts && startContacts.length>0) {
+      this.setState({ contacts: startContacts });
+    } else
+    {
+      }
   }
+
+   
+
+
+
 
   componentDidUpdate(_, prevState) {
   console.log('update contacts')
