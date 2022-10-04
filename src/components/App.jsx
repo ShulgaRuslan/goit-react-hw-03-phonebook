@@ -18,7 +18,7 @@ export class App extends Component {
 componentDidMount() {
   const startContacts = JSON.parse(localStorage.getItem('contacts'));
   // console.log(startContacts);
-   if (startContacts && startContacts.length>0) {
+   if (startContacts?.length) {
       this.setState({ contacts: startContacts });
     } 
   }
